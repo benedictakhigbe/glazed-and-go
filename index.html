@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Glazed and Go mini donuts menu with glazes, toppings, prices, and quick ordering."
+    />
+    <title>Glazed and Go | Mini Donuts Menu</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23e91e73'/%3E%3Ctext x='32' y='39' text-anchor='middle' font-size='22' font-family='Arial' font-weight='900' fill='white'%3EG%26G%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <nav class="topbar" aria-label="Primary navigation">
+        <a class="brand-mark" href="#top" aria-label="Glazed and Go home">
+          <span>G&G</span>
+        </a>
+        <div class="nav-links">
+          <a href="#menu">Menu</a>
+          <a href="#glazes">Glazes</a>
+          <a href="#toppings">Toppings</a>
+          <a href="#order">Order</a>
+        </div>
+        <div class="nav-actions">
+          <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+            <span class="theme-icon sun" aria-hidden="true"></span>
+            <span class="theme-icon moon" aria-hidden="true"></span>
+          </button>
+          <a class="nav-order" href="https://wa.me/2348063875757" target="_blank" rel="noreferrer">
+            Order now
+          </a>
+        </div>
+      </nav>
+
+      <main id="top">
+        <section class="hero" aria-labelledby="hero-title">
+          <img
+            class="hero-image"
+            src="assets/donut-hero.png"
+            alt="Mini donuts with pink, chocolate, and white glazes in a pink pastry box"
+          />
+          <div class="hero-overlay"></div>
+          <div class="hero-content">
+            <p class="eyebrow">Fresh &bull; Soft &bull; Sweet</p>
+            <h1 id="hero-title">Glazed <span>and Go</span></h1>
+            <p class="hero-copy">
+              Mini donuts made for sweet cravings, small celebrations, and sharing without
+              overthinking it.
+            </p>
+            <div class="hero-actions" aria-label="Order actions">
+              <a class="button primary" href="https://wa.me/2348063875757" target="_blank" rel="noreferrer">
+                WhatsApp order
+              </a>
+              <a class="button secondary" href="#menu">View menu</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="menu-band" id="menu" aria-labelledby="menu-title">
+          <div class="section-heading reveal">
+            <p class="ribbon-label">&hearts; Mini Donuts Menu &hearts;</p>
+            <h2 id="menu-title">Pick your box</h2>
+          </div>
+
+          <div class="price-grid">
+            <button class="price-card reveal" type="button" data-package="6 pcs">
+              <div class="count-badge">6<span>pcs</span></div>
+              <div>
+                <h3>Solo treat</h3>
+                <p>Perfect for one sweet break.</p>
+              </div>
+              <strong>&#8358;3,000</strong>
+            </button>
+
+            <button class="price-card featured reveal" type="button" data-package="12 pcs">
+              <div class="count-badge">12<span>pcs</span></div>
+              <div>
+                <h3>Share box</h3>
+                <p>Perfect for you, or to share.</p>
+              </div>
+              <strong>&#8358;6,000</strong>
+            </button>
+
+            <button class="price-card reveal" type="button" data-package="24 pcs">
+              <div class="count-badge">24<span>pcs</span></div>
+              <div>
+                <h3>Party box</h3>
+                <p>For birthdays, office snacks, and gifting.</p>
+              </div>
+              <strong>&#8358;12,000</strong>
+            </button>
+          </div>
+        </section>
+
+        <section class="choice-layout">
+          <div class="panel reveal" id="glazes">
+            <div class="panel-title">
+              <span class="mini-ribbon">Glazes</span>
+              <h2>Choose your glaze</h2>
+            </div>
+            <div class="glaze-list">
+              <button class="glaze-item active" type="button" data-glaze="Chocolate">
+                <span class="donut-swatch chocolate"></span>
+                <span>Chocolate</span>
+              </button>
+              <button class="glaze-item" type="button" data-glaze="Strawberry">
+                <span class="donut-swatch strawberry"></span>
+                <span>Strawberry</span>
+              </button>
+              <button class="glaze-item" type="button" data-glaze="White chocolate">
+                <span class="donut-swatch white"></span>
+                <span>White chocolate</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="panel reveal" id="toppings">
+            <div class="panel-title">
+              <span class="mini-ribbon">Toppings</span>
+              <h2>Make it yours</h2>
+            </div>
+            <div class="tabs" role="tablist" aria-label="Topping types">
+              <button class="tab active" type="button" data-tab="regular">Regular</button>
+              <button class="tab" type="button" data-tab="premium">Premium +&#8358;600</button>
+            </div>
+
+            <div class="topping-grid active" id="regular">
+              <button class="topping active" type="button" data-topping="Oreo crumbs">
+                <span class="topping-swatch oreo"></span>
+                <span>Oreo crumbs</span>
+              </button>
+              <button class="topping" type="button" data-topping="Rainbow sprinkles">
+                <span class="topping-swatch sprinkles"></span>
+                <span>Rainbow sprinkles</span>
+              </button>
+              <button class="topping" type="button" data-topping="Crushed biscuits">
+                <span class="topping-swatch biscuit"></span>
+                <span>Crushed biscuits</span>
+              </button>
+            </div>
+
+            <div class="topping-grid" id="premium">
+              <button class="topping" type="button" data-topping="M&M's">
+                <span class="topping-swatch candy"></span>
+                <span>M&amp;M's</span>
+              </button>
+              <button class="topping" type="button" data-topping="Chocolate chips">
+                <span class="topping-swatch chips"></span>
+                <span>Chocolate chips</span>
+              </button>
+              <button class="topping" type="button" data-topping="White chocolate chips">
+                <span class="topping-swatch whitechips"></span>
+                <span>White chocolate chips</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section class="order-panel reveal" id="order" aria-labelledby="order-title">
+          <div>
+            <p class="script-note">Thank you for supporting small!</p>
+            <h2 id="order-title">Ready when your cravings are.</h2>
+            <p class="order-summary" aria-live="polite">
+              Your box: <strong>12 pcs</strong> with <strong>Chocolate</strong> glaze and
+              <strong>Oreo crumbs</strong>.
+            </p>
+          </div>
+          <div class="contact-card">
+            <a href="https://wa.me/2348063875757" target="_blank" rel="noreferrer">
+              <span class="contact-icon">WA</span>
+              08063875757
+            </a>
+            <a href="https://instagram.com/glazedandgo_" target="_blank" rel="noreferrer">
+              <span class="contact-icon">IG</span>
+              @glazedandgo_
+            </a>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="script.js"></script>
+  </body>
+</html>
