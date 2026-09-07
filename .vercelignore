@@ -3,3 +3,5 @@
 desktop-check.png
 mobile-check.png
 *.log
+build-vercel-import.js
+vercel-import.html

@@ -4,6 +4,6 @@
   "private": true,
   "scripts": {
     "dev": "python -m http.server 4173",
-    "build": "echo Static site ready"
+    "build": "node build-public.js"
   }
 }
