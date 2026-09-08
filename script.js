@@ -6,8 +6,10 @@ import {
 
 const state = {
   package: "12 pcs",
+  price: 6000,
   glaze: "Chocolate",
   topping: "Oreo crumbs",
+  toppingExtra: 0,
 };
 
 const summary = document.querySelector(".order-summary");
@@ -17,7 +19,44 @@ const tabs = document.querySelectorAll(".tab");
 const toppingGrids = document.querySelectorAll(".topping-grid");
 const toppingButtons = document.querySelectorAll(".topping");
 const themeToggle = document.querySelector(".theme-toggle");
+const orderLinks = document.querySelectorAll(".order-link");
+const copyStatus = document.querySelector(".copy-status");
 const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+const whatsappNumber = "2348063875757";
+const instagramUrl = "https://instagram.com/glazedandgo_";
+const currencyFormatter = new Intl.NumberFormat("en-NG", {
+  style: "currency",
+  currency: "NGN",
+  maximumFractionDigits: 0,
+});
+
+function formatPrice(amount) {
+  return currencyFormatter.format(amount).replace("NGN", "₦");
+}
+
+function getOrderMessage() {
+  const toppingLine =
+    state.toppingExtra > 0
+      ? `${state.topping} (+${formatPrice(state.toppingExtra)})`
+      : state.topping;
+  const total = state.price + state.toppingExtra;
+
+  return `Hello Glazed and Go, I would like to order:\n\nBox: ${state.package}\nGlaze: ${state.glaze}\nTopping: ${toppingLine}\nTotal: ${formatPrice(total)}`;
+}
+
+function updateOrderLinks() {
+  const message = encodeURIComponent(getOrderMessage());
+
+  orderLinks.forEach((link) => {
+    if (link.dataset.channel === "whatsapp") {
+      link.href = `https://wa.me/${whatsappNumber}?text=${message}`;
+    }
+
+    if (link.dataset.channel === "instagram") {
+      link.href = instagramUrl;
+    }
+  });
+}
 
 function applyTheme(theme) {
   document.documentElement.dataset.theme = theme;
@@ -33,6 +72,7 @@ applyTheme(savedTheme || (systemPrefersDark.matches ? "dark" : "light"));
 
 function updateSummary() {
   summary.innerHTML = `Your box: <strong>${state.package}</strong> with <strong>${state.glaze}</strong> glaze and <strong>${state.topping}</strong>.`;
+  updateOrderLinks();
 
   animate(
     summary,
@@ -40,6 +80,25 @@ function updateSummary() {
     { duration: 0.34, easing: "ease-out" }
   );
 }
+
+orderLinks.forEach((link) => {
+  link.addEventListener("click", async (event) => {
+    if (link.dataset.channel !== "instagram") {
+      return;
+    }
+
+    event.preventDefault();
+
+    try {
+      await navigator.clipboard.writeText(getOrderMessage());
+      copyStatus.textContent = "Order copied. Paste it into Instagram DM.";
+    } catch {
+      copyStatus.textContent = "Copy this order into Instagram DM: " + getOrderMessage();
+    }
+
+    window.open(instagramUrl, "_blank", "noreferrer");
+  });
+});
 
 priceCards.forEach((card) => {
   if (card.dataset.package === state.package) {
@@ -50,6 +109,7 @@ priceCards.forEach((card) => {
     priceCards.forEach((item) => item.classList.remove("selected"));
     card.classList.add("selected");
     state.package = card.dataset.package;
+    state.price = Number(card.dataset.price);
     updateSummary();
 
     animeAnimate(card, {
@@ -92,6 +152,7 @@ toppingButtons.forEach((button) => {
     toppingButtons.forEach((item) => item.classList.remove("active"));
     button.classList.add("active");
     state.topping = button.dataset.topping;
+    state.toppingExtra = Number(button.dataset.extra);
     updateSummary();
 
     animeAnimate(button.querySelector(".topping-swatch"), {
@@ -134,3 +195,5 @@ inView(
   },
   { margin: "0px 0px -80px 0px" }
 );
+
+updateOrderLinks();
