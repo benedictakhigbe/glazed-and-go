@@ -15,3 +15,8 @@ fs.copyFileSync(
   path.join(root, "assets", "donut-hero.png"),
   path.join(output, "assets", "donut-hero.png")
 );
+
+fs.copyFileSync(
+  path.join(root, "assets", "logo.png"),
+  path.join(output, "assets", "logo.png")
+);

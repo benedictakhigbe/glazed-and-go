@@ -59,7 +59,9 @@
           <div class="hero-overlay"></div>
           <div class="hero-content">
             <p class="eyebrow">Fresh &bull; Soft &bull; Sweet</p>
-            <h1 id="hero-title">Glazed <span>and Go</span></h1>
+            <h1 class="logo-title" id="hero-title">
+              <img class="hero-logo" src="assets/logo.png" alt="Glazed and Go Mini Donuts" />
+            </h1>
             <p class="hero-copy">
               Mini donuts made for sweet cravings, small celebrations, and sharing without
               overthinking it.
@@ -119,63 +121,41 @@
           <div class="panel reveal" id="glazes">
             <div class="panel-title">
               <span class="mini-ribbon">Glazes</span>
-              <h2>Choose your glaze</h2>
+              <h2>Choose your glaze mix</h2>
             </div>
-            <div class="glaze-list">
-              <button class="glaze-item active" type="button" data-glaze="Chocolate">
+            <div class="glaze-mix">
+              <label class="glaze-control">
                 <span class="donut-swatch chocolate"></span>
                 <span>Chocolate</span>
-              </button>
-              <button class="glaze-item" type="button" data-glaze="Strawberry">
+                <input type="number" min="0" inputmode="numeric" data-glaze-count="Chocolate" value="4" />
+              </label>
+              <label class="glaze-control">
                 <span class="donut-swatch strawberry"></span>
                 <span>Strawberry</span>
-              </button>
-              <button class="glaze-item" type="button" data-glaze="White chocolate">
+                <input type="number" min="0" inputmode="numeric" data-glaze-count="Strawberry" value="4" />
+              </label>
+              <label class="glaze-control">
                 <span class="donut-swatch white"></span>
                 <span>White chocolate</span>
-              </button>
+                <input type="number" min="0" inputmode="numeric" data-glaze-count="White chocolate" value="4" />
+              </label>
             </div>
+            <p class="glaze-balance" aria-live="polite"></p>
           </div>
 
           <div class="panel reveal" id="toppings">
             <div class="panel-title">
               <span class="mini-ribbon">Toppings</span>
-              <h2>Make it yours</h2>
+              <h2>Choose your toppings</h2>
             </div>
-            <div class="tabs" role="tablist" aria-label="Topping types">
-              <button class="tab active" type="button" data-tab="regular">Regular</button>
-              <button class="tab" type="button" data-tab="premium">Premium +&#8358;600</button>
+            <div class="simple-select">
+              <span>Main topping</span>
+              <div class="custom-select-host" data-default-topping></div>
             </div>
-
-            <div class="topping-grid active" id="regular">
-              <button class="topping active" type="button" data-topping="Oreo crumbs" data-extra="0">
-                <span class="topping-swatch oreo"></span>
-                <span>Oreo crumbs</span>
-              </button>
-              <button class="topping" type="button" data-topping="Rainbow sprinkles" data-extra="0">
-                <span class="topping-swatch sprinkles"></span>
-                <span>Rainbow sprinkles</span>
-              </button>
-              <button class="topping" type="button" data-topping="Crushed biscuits" data-extra="0">
-                <span class="topping-swatch biscuit"></span>
-                <span>Crushed biscuits</span>
-              </button>
-            </div>
-
-            <div class="topping-grid" id="premium">
-              <button class="topping" type="button" data-topping="M&M's" data-extra="600">
-                <span class="topping-swatch candy"></span>
-                <span>M&amp;M's</span>
-              </button>
-              <button class="topping" type="button" data-topping="Chocolate chips" data-extra="600">
-                <span class="topping-swatch chips"></span>
-                <span>Chocolate chips</span>
-              </button>
-              <button class="topping" type="button" data-topping="White chocolate chips" data-extra="600">
-                <span class="topping-swatch whitechips"></span>
-                <span>White chocolate chips</span>
-              </button>
-            </div>
+            <details class="custom-donut-details">
+              <summary>Customize each donut</summary>
+              <div class="donut-custom-grid" aria-live="polite"></div>
+            </details>
           </div>
         </section>
 
@@ -184,8 +164,7 @@
             <p class="script-note">Thank you for supporting small!</p>
             <h2 id="order-title">Ready when your cravings are.</h2>
             <p class="order-summary" aria-live="polite">
-              Your box: <strong>12 pcs</strong> with <strong>Chocolate</strong> glaze and
-              <strong>Oreo crumbs</strong>.
+              Your custom box is ready.
             </p>
           </div>
           <div class="contact-card">
